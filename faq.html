@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>課程常見問題 Q&A｜mythrosy 柔思溫罐</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PFM3HQ0C2N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PFM3HQ0C2N');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Serif+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fef2ef;
+    --warm-white: #fff8f6;
+    --blush: #f5b1a2;
+    --terracotta: #e46c82;
+    --terracotta-light: #f5b1a2;
+    --brown: #8d4956;
+    --dark-brown: #474237;
+    --sage: #c9a8ad;
+    --sage-light: #f9dbd8;
+    --stone: #c9a8ad;
+    --text: #474237;
+    --text-light: #8d4956;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Serif TC', serif;
+    background-color: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(254, 242, 239, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(228, 108, 130, 0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--terracotta);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--terracotta);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+    border: 1px solid var(--terracotta);
+    font-family: 'Noto Serif TC', serif;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--brown);
+    border-color: var(--brown);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid var(--stone);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    transform: translateY(-2px);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 10rem 4rem 5rem;
+    text-align: center;
+    background: linear-gradient(160deg, var(--cream) 0%, var(--sage-light) 100%);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--dark-brown);
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.9;
+    font-weight: 300;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* ── FAQ ── */
+  .faq {
+    padding: 5rem 4rem 6rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .faq-category {
+    margin-bottom: 3.5rem;
+  }
+
+  .faq-category-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .faq-category-title::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(228, 108, 130, 0.15);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.98rem;
+    color: var(--dark-brown);
+    font-weight: 500;
+    line-height: 1.6;
+    transition: color 0.3s;
+  }
+
+  .faq-question:hover { color: var(--terracotta); }
+
+  .faq-question.active { color: var(--terracotta); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--stone);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--stone);
+    transition: all 0.3s;
+  }
+
+  .faq-question.active .faq-icon {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: white;
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+  }
+
+  .faq-answer.open {
+    max-height: 600px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 0 1.8rem;
+    font-size: 0.92rem;
+    line-height: 2;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    padding: 6rem 4rem;
+    background: var(--warm-white);
+    text-align: center;
+  }
+
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--dark-brown);
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+  }
+
+  .cta p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark-brown);
+    color: rgba(255,255,255,0.6);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: white; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    nav .nav-links { display: none; }
+    .hero { padding: 7rem 2rem 3rem; }
+    .faq { padding: 3rem 2rem 4rem; }
+    .cta { padding: 4rem 2rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">mythrosy 柔思溫罐</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">關於我</a></li>
+    <li><a href="index.html#services">服務</a></li>
+    <li><a href="course.html">課程</a></li>
+    <li><a href="index.html#contact">預約</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">溫罐按摩三日班</div>
+  <h1 class="hero-title">課程常見問題 Q&A</h1>
+  <p class="hero-desc">在決定報名之前，先把你的疑問弄清楚。這裡整理了最常被問到的問題，如果還有其他想知道的，歡迎直接來聊。</p>
+  <a href="course.html" class="btn-outline">← 回到課程頁面</a>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+
+  <!-- 費用與付款 -->
+  <div class="faq-category">
+    <div class="faq-category-title">費用與付款</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        課程費用是多少？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">費用會根據你選擇的方案與上課天數有所不同，建議先預約 1v1 課程諮詢，聊過之後我會給你最精準的報價。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        付款方式有哪些？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">支援匯款、信用卡刷卡、無卡分期，可以依照你的習慣選擇。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 上課安排 -->
+  <div class="faq-category">
+    <div class="faq-category-title">上課安排</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        一個人可以上課嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">可以，一人即可開班。時間完全根據你的生活安排，不需要等待湊班。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        課程總共上幾個小時？時間怎麼安排？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">課程總時數為 24 小時，實際排課方式可以依照你的需求調整——平日班、假日班，或是分散在平日晚上都可以。如果想更清楚了解怎麼安排，預約課程諮詢的時候我們可以一起討論。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        上課地點在哪裡？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">上課地點在板橋江子翠捷運站附近，步行約 5 到 7 分鐘。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        上課需要自己找模特兒嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">建議自己找，因為這樣等於多一個人幫你記住流程與手法，對你之後執行客人也很有幫助。如果真的找不到，可以提前告訴我，我會幫忙想辦法。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 課後支持 -->
+  <div class="faq-category">
+    <div class="faq-category-title">課後支持</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        複訓的使用期限是多久？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">兩次複訓需在結業後一年內使用完畢。如果有特殊狀況，可以提前跟我討論。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        學員社群是什麼形式？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">學員社群以 LINE 群組為主，讓大家可以互相交流。我也會在這裡統一發布最新資訊、課程更新，以及一些實用的經營資源。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        品牌陪跑是什麼？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">品牌陪跑是我根據自己的創業與品牌操作經驗設計的 90 天一對一計畫。從帳號從零建立、接客流程、初步財務規劃，到發文內容與主題發想，全程陪你走。費用為 NT$12,800，學員享有專屬優惠價。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 開業與資格 -->
+  <div class="faq-category">
+    <div class="faq-category-title">開業與資格</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        學完可以馬上開業嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">學完之後你會有獨立執行客人的能力，這是肯定的。但能不能真的靠這項技術賺到錢，後面還有很多要經營和思考的東西。我不想給你一個「學完就躺著收錢」的想像，但我可以告訴你：這條路走得起來，只要你願意繼續努力，我也會在這裡。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        結業後有證書嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">有。結業後會頒發由柔思核發的結業證書，但這份證書不是上完課就自動給的——你需要通過結業考核，確認真的掌握了技術與知識才會頒發。如果考核沒有過，提供免費複試機會，回去練習後重新約時間即可，不另外收費。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        需要考政府證照才能開業嗎？任何人都可以開始嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">目前台灣政府尚未針對「溫罐」設立特定的國家考試或證照制度，不像美容丙級、乙級那樣有政府認證的考試。因此不需要另外參加政府考試，任何人都可以合法開始你的溫罐事業。<br><br>唯一需要注意的是宣傳字眼——不能涉及療效或容易誇大不實的描述。這部分你不用擔心，課程中我會把相關資源和注意事項都整理給你。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 適合對象 -->
+  <div class="faq-category">
+    <div class="faq-category-title">適合對象</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        完全沒有美業基礎可以學嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">可以。Rosy 當初也是從完全沒有美業基礎開始的，所以我很清楚沒有基礎的人會卡在哪裡。目前超過一半的學員都是零基礎出發，她們現在都已經用這項技能開始有了第二份收入。</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        我已經在其他地方學過溫罐，還適合來嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">適合。我遇過不少學員是在其他地方學過、但覺得學得不夠扎實，想要重新獲得更有系統的訓練才來報名的。如果你有這樣的疑慮，可以先預約課程諮詢聊聊，或是預約溫罐孤兒諮詢，我們一起看看我能幫到你什麼。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 器材與耗材 -->
+  <div class="faq-category">
+    <div class="faq-category-title">器材與耗材</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        課程使用的溫罐與耗材是哪裡來的？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">課程使用的是柔思自用的溫罐器材。結業後的耗材可以透過我代訂，因為大家一起訂有比較優惠的價格；如果你有自己喜歡的廠商，自行對接也完全沒有問題，沒有任何綁定。</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>還有其他問題？</h2>
+  <p>不用等，直接來聊。預約免費的 1v1 課程諮詢，我們一起確認這條路適不適合你現在的狀況。</p>
+  <div class="cta-buttons">
+    <a href="https://line.me/R/ti/p/@mythrosy23" target="_blank" class="btn-primary">預約 1v1 課程諮詢</a>
+    <a href="course.html" class="btn-outline">回到課程頁面</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">mythrosy 柔思溫罐</div>
+  <div>© 2026 mythrosy 柔思溫罐</div>
+  <ul class="footer-links">
+    <li><a href="index.html">首頁</a></li>
+    <li><a href="course.html">課程</a></li>
+    <li><a href="index.html#contact">預約</a></li>
+  </ul>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('active'));
+
+    // Open clicked if it was closed
+    if (!isOpen) {
+      answer.classList.add('open');
+      btn.classList.add('active');
+    }
+  }
+</script>
+
+</body>
+</html>
