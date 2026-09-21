@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微型創業輕諮詢｜mythrosy 柔思溫罐</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PFM3HQ0C2N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PFM3HQ0C2N');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Serif+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fef2ef;
+    --warm-white: #fff8f6;
+    --blush: #f5b1a2;
+    --terracotta: #e46c82;
+    --terracotta-light: #f5b1a2;
+    --brown: #8d4956;
+    --dark-brown: #474237;
+    --sage: #c9a8ad;
+    --sage-light: #f9dbd8;
+    --stone: #c9a8ad;
+    --text: #474237;
+    --text-light: #8d4956;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Serif TC', serif;
+    background-color: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(254, 242, 239, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(228, 108, 130, 0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--terracotta);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-links a.active { color: var(--terracotta); }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--terracotta);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+    border: 1px solid var(--terracotta);
+    font-family: 'Noto Serif TC', serif;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--brown);
+    border-color: var(--brown);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid var(--stone);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    transform: translateY(-2px);
+  }
+
+  /* ── SECTION COMMON ── */
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label.center { justify-content: center; }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--dark-brown);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--terracotta); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 9rem 4rem 5rem;
+    background: linear-gradient(160deg, var(--cream) 0%, var(--sage-light) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%; right: -5%;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse, rgba(245,177,162,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    line-height: 1.4;
+    color: var(--dark-brown);
+    margin-bottom: 1.8rem;
+    font-weight: 500;
+    max-width: 720px;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--terracotta);
+  }
+
+  .hero-intro {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  /* ── VALUE / 陸戰 ── */
+  .value {
+    padding: 6rem 4rem;
+    background: var(--warm-white);
+  }
+
+  .value-inner { max-width: 820px; margin: 0 auto; }
+
+  .value-lead {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--dark-brown);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+
+  .value-lead em { font-style: normal; color: var(--terracotta); font-weight: 500; }
+
+  .value-body p {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .value-exp {
+    margin-top: 2.5rem;
+    padding: 2rem;
+    background: var(--cream);
+    border-left: 3px solid var(--terracotta);
+  }
+
+  .value-exp p {
+    font-size: 0.92rem;
+    line-height: 2;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  /* ── WHO ── */
+  .who {
+    padding: 6rem 4rem;
+    background: var(--cream);
+  }
+
+  .who-inner { max-width: 760px; margin: 0 auto; }
+
+  .who-list {
+    list-style: none;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .who-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  .who-list li::before {
+    content: '✓';
+    color: var(--terracotta);
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+
+  .who-closing {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: var(--dark-brown);
+    line-height: 1.9;
+  }
+
+  /* ── PLANS ── */
+  .plans {
+    padding: 6rem 4rem;
+    background: var(--warm-white);
+  }
+
+  .plans-inner { max-width: 900px; margin: 0 auto; }
+
+  .plans-head { text-align: center; margin-bottom: 3rem; }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .plan-card {
+    background: var(--cream);
+    padding: 2.8rem 2.4rem;
+    border: 1px solid rgba(228,108,130,0.15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plan-card.featured {
+    background: linear-gradient(160deg, var(--warm-white) 0%, var(--sage-light) 100%);
+    border: 1.5px solid var(--terracotta);
+    position: relative;
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: -12px;
+    left: 2.4rem;
+    background: var(--terracotta);
+    color: white;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    padding: 0.35rem 1rem;
+  }
+
+  .plan-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--dark-brown);
+    margin-bottom: 0.5rem;
+  }
+
+  .plan-tagline {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .plan-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--terracotta);
+    margin-bottom: 0.3rem;
+  }
+
+  .plan-price small {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-family: 'Noto Serif TC', serif;
+  }
+
+  .plan-price-note {
+    font-size: 0.8rem;
+    color: var(--stone);
+    margin-bottom: 1.8rem;
+    line-height: 1.6;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+
+  .plan-features li {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    font-weight: 300;
+    padding-left: 1.4rem;
+    position: relative;
+  }
+
+  .plan-features li::before {
+    content: '·';
+    position: absolute;
+    left: 0.4rem;
+    color: var(--terracotta);
+    font-size: 1.2rem;
+  }
+
+  .plan-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testi {
+    padding: 6rem 4rem;
+    background: var(--cream);
+  }
+
+  .testi-inner { max-width: 900px; margin: 0 auto; }
+
+  .testi-head { text-align: center; margin-bottom: 3rem; }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+  }
+
+  .testi-card {
+    background: var(--warm-white);
+    padding: 2rem;
+    border: 1px solid rgba(228,108,130,0.12);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testi-text {
+    font-size: 0.9rem;
+    line-height: 1.95;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+  }
+
+  .testi-author {
+    font-size: 0.85rem;
+    color: var(--terracotta);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CASE STUDY ── */
+  .case {
+    padding: 6rem 4rem;
+    background: var(--warm-white);
+  }
+
+  .case-inner { max-width: 760px; margin: 0 auto; }
+
+  .case-box {
+    margin-top: 2.5rem;
+    background: var(--cream);
+    padding: 2.5rem;
+    border: 1px solid rgba(228,108,130,0.15);
+  }
+
+  .case-box h4 {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--terracotta);
+    margin: 1.5rem 0 0.6rem;
+  }
+
+  .case-box h4:first-child { margin-top: 0; }
+
+  .case-box p {
+    font-size: 0.92rem;
+    line-height: 1.95;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    padding: 7rem 4rem;
+    background: linear-gradient(160deg, var(--sage-light) 0%, var(--cream) 100%);
+    text-align: center;
+  }
+
+  .cta-inner { max-width: 640px; margin: 0 auto; }
+
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--dark-brown);
+    margin-bottom: 1.3rem;
+    font-weight: 400;
+  }
+
+  .cta p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark-brown);
+    color: rgba(255,255,255,0.6);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: white; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav .nav-links { display: none; }
+    .hero { padding: 7rem 2rem 4rem; }
+    .value, .who, .plans, .testi, .case, .cta { padding: 4rem 2rem; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">mythrosy 柔思溫罐</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">關於我</a></li>
+    <li><a href="index.html#services">服務</a></li>
+    <li><a href="consulting.html" class="active">輕諮詢</a></li>
+    <li><a href="course.html">課程</a></li>
+    <li><a href="index.html#contact">預約</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">微型創業輕諮詢</div>
+  <h1 class="hero-title">不只陪你打空戰，<br>更陪你打<em>陸戰</em></h1>
+  <p class="hero-intro">
+    如果你有一項手藝、一個商品，想把它變成一門真正養得活自己的生意，<br>
+    但卡在「客人到底從哪裡來」——<br>
+    這裡或許就是你一直在找的地方。
+  </p>
+  <a href="https://line.me/R/ti/p/@mythrosy23" target="_blank" class="btn-primary">預約創業健檢</a>
+</section>
+
+<!-- VALUE -->
+<section class="value">
+  <div class="value-inner">
+    <div class="section-label">為什麼是我</div>
+    <p class="value-lead">很多創業諮詢，教你的是<em>空戰</em>——品牌定位、內容策略、社群經營。這些都重要，但對一個剛起步、需要真實客人上門的人來說，還不夠。</p>
+    <div class="value-body">
+      <p>你真正需要的是<strong>陸戰</strong>：擺攤的時候第一句話怎麼說才留得住人、在地的 Facebook 社團要怎麼發文才有人回、要用個人帳號還是粉專、市集資訊去哪裡找、怎麼把一個路過的人變成會回頭的客人。</p>
+      <p>這些東西 Google 不太查得到，因為它們藏在真正做過的人的經驗裡。而我，就是那個真的做過的人。</p>
+    </div>
+    <div class="value-exp">
+      <p>我擺過地攤賣貼紙、從淘寶進耳環跑市集做網路販售，也一個人把地區性極強的溫罐服務經營起來。從實體到線上、從擺攤到接客，我踩過的坑、走通的路，都是我陪你的時候真正拿得出來用的東西。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="who-inner">
+    <div class="section-label">這是為你準備的嗎</div>
+    <h2 class="section-title">如果你正卡在<br>這些地方——</h2>
+    <ul class="who-list">
+      <li>有一項服務或商品，但還沒有穩定的客人，不知道怎麼推廣</li>
+      <li>想開始斜槓或創業，卻不知道從哪一步動手，也怕選錯白忙一場</li>
+      <li>對創業方向感到迷惘，身邊沒有人可以問、可以討論</li>
+      <li>發文都在貼產品照，但成效很差，不知道問題出在哪</li>
+      <li>知道要經營社群，但完全抓不到「在地客人」要怎麼觸及</li>
+    </ul>
+    <p class="who-closing">如果你有其中任何一種感受，我們可以聊聊。<br>你不需要先變得很厲害才來——你只需要願意開始。</p>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans">
+  <div class="plans-inner">
+    <div class="plans-head">
+      <div class="section-label center">諮詢方案</div>
+      <h2 class="section-title">先從一次<em>創業健檢</em>開始</h2>
+    </div>
+    <div class="plans-grid">
+
+      <div class="plan-card featured">
+        <span class="plan-badge">先從這裡開始</span>
+        <div class="plan-name">創業健檢</div>
+        <div class="plan-tagline">50 分鐘線上一對一，幫你把現況盤一遍，找出最該先動的那一兩件事。</div>
+        <div class="plan-price">NT$1,500 <small>/ 次</small></div>
+        <div class="plan-price-note">費用可折抵後續方案</div>
+        <ul class="plan-features">
+          <li>50 分鐘線上一對一諮詢</li>
+          <li>盤點你目前的狀況與卡點</li>
+          <li>針對你的產業與資源，給出具體可執行的下一步</li>
+          <li>諮詢後提供一份書面重點整理，讓你隨時可以回看</li>
+          <li>適合還在觀望、想先確認方向的人</li>
+        </ul>
+        <a href="https://line.me/R/ti/p/@mythrosy23" target="_blank" class="btn-primary" style="text-align:center;">預約創業健檢</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">四次諮詢方案</div>
+        <div class="plan-tagline">單次聊完常常沒有下文。一個方向要真正走出成果，需要連續的陪伴與調整。</div>
+        <div class="plan-price">NT$5,000</div>
+        <div class="plan-price-note">平均每次 1,250，比單次更划算<br>已做過創業健檢者，首次費用折抵</div>
+        <ul class="plan-features">
+          <li>四次線上一對一諮詢</li>
+          <li>建議每 1～2 週一次，讓你有時間實作再回來調整</li>
+          <li>陪你把一件事真正做到有成果、有回饋</li>
+          <li>累積出可以繼續宣傳的實績與素材</li>
+          <li>適合已經確定方向、想認真執行的人</li>
+        </ul>
+        <a href="https://line.me/R/ti/p/@mythrosy23" target="_blank" class="btn-outline" style="text-align:center;">諮詢後可直接升級</a>
+      </div>
+
+    </div>
+    <p class="plan-note">建議先從單次創業健檢開始，實際聊過、確認我幫得上你，再決定要不要進一步的方案。<br>付款支援匯款、刷卡與無卡分期。</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="testi-inner">
+    <div class="testi-head">
+      <div class="section-label center">諮詢者怎麼說</div>
+      <h2 class="section-title">她們原本也<em>卡在同一個地方</em></h2>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <p class="testi-text">我很謝謝老師在這一次的諮詢當中聆聽了很多我的想法，也給我很多可以實際操作的方式，諮詢完之後還提供一份報告書讓我可以時不時拿出來看，我覺得非常貼心，讓我覺得經營自己這件事變得沒有那麼困難了。</p>
+        <div class="testi-author">— Tiana</div>
+      </div>
+
+      <div class="testi-card">
+        <p class="testi-text">看妳還特地整理成一個筆記，我覺得非常感動，不是只有那天吃個飯就忘記了，妳竟然還會回家整理我的問題，然後把妳的想法打成文字回饋給我，讓我隨時都可以看，把我的卡點跟痛點以及建議的做法都列出來，實在是太太太用心了，感謝您！</p>
+        <div class="testi-author">— Gina</div>
+      </div>
+
+      <div class="testi-card">
+        <p class="testi-text">沒有想過竟然也可以去問 AI，老師提點以後我自己去試試看，確實 AI 能給出的東西非常多，而且有些給的內容反而超出我的想像，謝謝老師。真的很謝謝讓我在迷茫中遇見了老師。</p>
+        <div class="testi-author">— 樂樂</div>
+      </div>
+
+      <div class="testi-card">
+        <p class="testi-text">謝謝 Rosy 給的指導方向，雖然只有短短的時間，看出了我的問題點，也給出了相對應的解決方法，我會繼續努力在美業這條路有所精進。</p>
+        <div class="testi-author">— 洪小筑</div>
+      </div>
+
+      <div class="testi-card" style="grid-column: 1 / -1;">
+        <p class="testi-text">這次的創業諮詢讓我有滿多收穫，也幫助我把原本有點模糊的方向拉得更清楚。老師建議我初期經營社群時把重心放在「70% 曝光 + 30% 情感連結」，先讓更多人看見，再慢慢建立信任感；平台從最容易上手的管道開始，這對我來說很實際。整個諮詢的感受也很好，親切、有耐心，溝通沒有壓力，也會根據我的情況給出實用的建議，而不是很空泛的方向。最大的收穫不只是策略，而是讓我更確定一件事：與其想很多，不如先開始行動。</p>
+        <div class="testi-author">— 匿名諮詢者</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case">
+  <div class="case-inner">
+    <div class="section-label">案例分享</div>
+    <h2 class="section-title">一個做手作飾品的新手，<br><em>從零開始</em>的第一步</h2>
+    <div class="case-box">
+      <h4>她的狀況</h4>
+      <p>一位遠嫁海外的媽媽，想把自己會的手作技能變成收入、補貼家用。她做的是結合姓名與生命靈數的客製化飾品，商品很有特色，但完全不知道從哪裡開始——有 Facebook 帳號卻沒有內容，想做的事情很多，卻不知道怎麼踏出第一步。</p>
+
+      <h4>我們一起釐清的方向</h4>
+      <p>我陪她把商品先收斂到最有記憶點的品項，然後把重心從「一直貼產品照」轉向「先堆疊自己在生命靈數這塊的專業」——用互動小測驗、號碼特質介紹這類內容引流，再自然延伸到商品。也一起規劃了發文節奏、當地社群的經營方式，還有一句可以實際拿去破冰的推廣話術。</p>
+
+      <h4>她帶走的東西</h4>
+      <p>不是一堆理論，而是一份「明天就能開始做」的具體行動清單：建立帳號、去在地社團打招呼、開始發文並蒐集第一批個案。方向清楚了，剩下的就是開始。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="section-label center">開始吧</div>
+    <h2>與其想很多，<br>不如先開始</h2>
+    <p>這是很多諮詢者聊完之後最大的體悟。如果你也卡在原地很久了，先來一次創業健檢，我們一起把最該動的那一步找出來。</p>
+    <a href="https://line.me/R/ti/p/@mythrosy23" target="_blank" class="btn-primary" style="font-size:1rem;padding:1.1rem 3rem;">用 LINE 預約創業健檢</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">mythrosy 柔思溫罐</div>
+  <div>© 2026 mythrosy 柔思溫罐</div>
+  <ul class="footer-links">
+    <li><a href="index.html">首頁</a></li>
+    <li><a href="course.html">課程</a></li>
+    <li><a href="index.html#contact">預約</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
