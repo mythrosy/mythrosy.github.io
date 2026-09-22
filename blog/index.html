@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<title>柔思所思｜mythrosy 柔思溫罐</title>
+<meta name="description" content="身體保養的心得、創業路上的觀察，還有一些生活裡的隨筆。慢慢寫，慢慢說。">
+<link rel="canonical" href="https://mythrosy.com/blog/index.html">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Serif+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap">
+<style>
+  :root {
+    --cream: #fef2ef;
+    --terracotta: #e46c82;
+    --terracotta-light: #f5b1a2;
+    --brown: #8d4956;
+    --dark-brown: #474237;
+    --text: #474237;
+    --text-light: #8d4956;
+    --muted: #9a8f86;
+    --hairline: #f3d9d2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 300;
+    background: var(--cream);
+    color: var(--text);
+  }
+  a { color: inherit; text-decoration: none; }
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 56px; border-bottom: 1px solid var(--hairline);
+    background: rgba(254, 242, 239, 0.92); backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .nav-logo { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 17px; font-weight: 500; letter-spacing: 0.04em; color: var(--text-light); }
+  .nav-links { display: flex; gap: 26px; font-size: 13px; color: var(--muted); list-style: none; }
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-links .current { color: var(--terracotta); font-weight: 500; }
+  footer {
+    background: var(--dark-brown); color: #e8dfd8; padding: 40px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 15px; color: var(--terracotta-light); }
+  footer .footer-text { color: #b8a89f; }
+  footer ul { display: flex; gap: 20px; list-style: none; }
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+  }
+</style>
+
+<style>
+  .head { max-width: 1040px; margin: 0 auto; padding: 72px 32px 8px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .eyebrow { font-weight: 500; font-size: 12px; letter-spacing: 0.22em; color: #c58a97; text-transform: uppercase; }
+  h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 38px; font-weight: 500; color: var(--text-light); }
+  .lede { max-width: 460px; font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--muted); }
+  .pills { max-width: 1040px; margin: 0 auto; padding: 36px 32px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+  .cat-pill { padding: 8px 20px; border-radius: 999px; background: #fff; border: 1px solid #ecc9c1; color: #a8798a; font-size: 13px; cursor: pointer; transition: all .2s ease; }
+  .cat-pill.active { background: var(--text-light); border-color: var(--text-light); color: #fff; }
+  .grid { max-width: 1040px; margin: 0 auto; padding: 44px 32px 96px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .post-card { display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 14px rgba(141,73,86,0.06); transition: transform .2s ease; }
+  .post-card:hover { transform: translateY(-6px); }
+  .post-card:hover .post-title { color: var(--terracotta); }
+  .card-body { padding: 26px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .cat-tag { align-self: flex-start; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 500; letter-spacing: 0.05em; }
+  .post-title { font-size: 17px; font-weight: 500; color: var(--text-light); line-height: 1.55; transition: color .2s ease; }
+  .post-excerpt { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--muted); flex: 1; }
+  .post-date { font-size: 11px; font-weight: 300; color: #c3b8ad; }
+  .empty-note { max-width: 1040px; margin: 0 auto; padding: 0 32px 96px; text-align: center; color: var(--muted); font-size: 14px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html" class="nav-logo">mythrosy 柔思溫罐</a>
+  <ul class="nav-links">
+    <li><a href="/index.html#about">關於我</a></li>
+    <li><a href="/index.html#services">服務</a></li>
+    <li><a href="/course.html">課程</a></li>
+    <li><a href="/blog/index.html" class="current">部落格</a></li>
+    <li><a href="/index.html#contact">預約</a></li>
+  </ul>
+</nav>
+<div class="head">
+  <div class="eyebrow">Blog</div>
+  <h1>柔思所思</h1>
+  <p class="lede">身體保養的心得、創業路上的觀察，還有一些生活裡的隨筆。<br>慢慢寫，慢慢說。</p>
+</div>
+
+<p class="empty-note">還沒有發布的文章，敬請期待。</p>
+
+<footer>
+  <div class="footer-logo">mythrosy 柔思溫罐</div>
+  <div class="footer-text">© 2026 mythrosy 柔思溫罐 . All rights reserved.</div>
+  <ul>
+    <li><a href="/index.html#about">關於我</a></li>
+    <li><a href="/index.html#services">服務</a></li>
+    <li><a href="/course.html">課程</a></li>
+    <li><a href="/index.html#contact">預約</a></li>
+  </ul>
+</footer>
+<script>
+  document.querySelectorAll('.cat-pill').forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      document.querySelectorAll('.cat-pill').forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      var cat = pill.dataset.cat;
+      document.querySelectorAll('.post-card').forEach(function (card) {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
