@@ -5,8 +5,9 @@
 // 本機測試方式（不會影響正式網站，只是在你電腦上多產生檔案看看）：
 //   NOTION_API_KEY=ntn_xxx node scripts/build-blog.mjs
 
-import { mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdir, writeFile, readFile, readdir, rm } from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import {
   fetchAllPages,
   fetchPageContent,
@@ -42,6 +43,38 @@ function todayISO() {
   const now = new Date();
   const tw = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Taipei" }));
   return `${tw.getFullYear()}-${String(tw.getMonth() + 1).padStart(2, "0")}-${String(tw.getDate()).padStart(2, "0")}`;
+}
+
+// 產生一篇文章目前內容的指紋（標題＋內文），拿來跟上一次產生的版本比對，
+// 判斷這篇文章是不是「真的」被改過，藉此決定要不要更新「更新日期」。
+function hashContent(title, contentHtml) {
+  return createHash("sha256").update(`${title}||${contentHtml}`).digest("hex").slice(0, 16);
+}
+
+// 在清空 /blog/ 之前，先把上一次產生的每篇文章的內容指紋跟更新日期讀出來記住，
+// 這樣等一下才有東西可以比對「這次是不是真的有改內容」。
+async function readPreviousBuildState() {
+  const state = {};
+  let slugs = [];
+  try {
+    slugs = await readdir(BLOG_DIR);
+  } catch {
+    return state; // 第一次執行，還沒有 /blog/ 資料夾
+  }
+  for (const slug of slugs) {
+    try {
+      const oldHtml = await readFile(path.join(BLOG_DIR, slug, "index.html"), "utf8");
+      const hashMatch = oldHtml.match(/<!-- content-hash: ([a-f0-9]+) -->/);
+      const dateMatch = oldHtml.match(/<!-- updated: (\d{4}-\d{2}-\d{2}) -->/);
+      state[slug] = {
+        hash: hashMatch ? hashMatch[1] : null,
+        updateDate: dateMatch ? dateMatch[1] : null,
+      };
+    } catch {
+      // 不是文章資料夾（例如剛好有其他檔案），略過
+    }
+  }
+  return state;
 }
 
 async function main() {
@@ -95,6 +128,9 @@ async function main() {
     categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
   }
 
+  // 記住上一次的內容指紋，等一下用來判斷「更新日期」要不要跳。
+  const previousState = await readPreviousBuildState();
+
   // 清掉舊的 /blog/ 產出，重新整批產生，避免刪掉的文章留下孤兒頁面。
   await rm(BLOG_DIR, { recursive: true, force: true });
   await mkdir(BLOG_DIR, { recursive: true });
@@ -106,6 +142,21 @@ async function main() {
     const blocks = await fetchPageContent(post.id, API_KEY);
     const contentHtml = await blocksToHtml(blocks, API_KEY);
 
+    // 判斷這篇文章的「更新日期」：
+    // - 第一次產生（沒有上一版紀錄）→ 更新日期＝發布日期
+    // - 內容跟上一版一模一樣 → 沿用上一版的更新日期，不會亂跳
+    // - 內容真的不一樣了 → 更新日期改成今天
+    const contentHash = hashContent(post.title, contentHtml);
+    const prevState = previousState[post.slug];
+    let updateDate;
+    if (!prevState || !prevState.hash) {
+      updateDate = post.publishDate;
+    } else if (prevState.hash === contentHash && prevState.updateDate) {
+      updateDate = prevState.updateDate;
+    } else {
+      updateDate = today;
+    }
+
     const prev = posts[i + 1] || null; // 排序是新到舊，下一筆就是比較舊的「前一篇」
     const categoryPosts = posts.filter((p) => p.category === post.category && p.slug !== post.slug);
 
@@ -113,16 +164,21 @@ async function main() {
       prev,
       categoryPosts,
       allCategoryCounts: categoryCounts,
+      contentHash,
+      updateDate,
     });
 
     const dir = path.join(BLOG_DIR, post.slug);
     await mkdir(dir, { recursive: true });
     await writeFile(path.join(dir, "index.html"), html, "utf8");
 
-    // 把正式網址寫回 Notion，方便妳自己在 Notion 裡也能直接點連結。
+    // 把正式網址、更新日期寫回 Notion，方便妳自己在 Notion 裡也能直接看到。
     const canonical = `${SITE_URL}/blog/${post.slug}/`;
     if (post.publishedUrl !== canonical) {
       await updatePageProperties(post.id, { 發布網址: { url: canonical } }, API_KEY);
+    }
+    if (post.updateDate !== updateDate) {
+      await updatePageProperties(post.id, { 最後更新日期: { date: { start: updateDate } } }, API_KEY);
     }
   }
 

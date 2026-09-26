@@ -114,7 +114,10 @@ function footerHtml() {
 }
 
 // ── 單篇文章頁 ──────────────────────────────────────────────
-export function renderArticlePage(post, contentHtml, { prev, categoryPosts, allCategoryCounts }) {
+// contentHash／updateDate：用來判斷這篇文章的內容有沒有真的被改過，
+// 藏在頁面最上面的 HTML 註解裡，下次產生頁面時會拿來跟新內容比對。
+// 妳平常看網頁的時候不會看到這兩行，是給程式自己用的小紀錄。
+export function renderArticlePage(post, contentHtml, { prev, categoryPosts, allCategoryCounts, contentHash, updateDate }) {
   const style = categoryStyle(post.category);
   const plain = post.excerpt || "";
   const minutes = estimateReadingMinutes(contentHtml.replace(/<[^>]+>/g, ""));
@@ -147,7 +150,13 @@ export function renderArticlePage(post, contentHtml, { prev, categoryPosts, allC
     )
     .join("");
 
+  const metaLine = `${formatDate(post.publishDate)}${
+    updateDate && updateDate !== post.publishDate ? ` ・ 更新於 ${formatDate(updateDate)}` : ""
+  } ・ by Rosy ・ 閱讀約 ${minutes} 分鐘`;
+
   return `<!doctype html>
+<!-- content-hash: ${contentHash} -->
+<!-- updated: ${updateDate || ""} -->
 <html lang="zh-TW">
 <head>
 <title>${post.title}｜${SITE_NAME}</title>
@@ -215,7 +224,7 @@ ${navHtml("blog")}
     <div class="art-head">
       <span class="cat-tag">${post.category}</span>
       <h1>${post.title}</h1>
-      <div class="meta">${formatDate(post.publishDate)} ・ by Rosy ・ 閱讀約 ${minutes} 分鐘</div>
+      <div class="meta">${metaLine}</div>
     </div>
     <div class="divider-hr"><span></span></div>
     <div class="content">

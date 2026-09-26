@@ -157,7 +157,7 @@ export async function blocksToHtml(blocks, apiKey) {
   return html.join("\n");
 }
 
-// 更新一篇文章在 Notion 裡的屬性（用來寫回發布網址、把「已排程」自動轉成「已發布」）。
+// 更新一篇文章在 Notion 裡的屬性（用來寫回發布網址、更新日期、把「已排程」自動轉成「已發布」）。
 export async function updatePageProperties(pageId, properties, apiKey) {
   const res = await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
     method: "PATCH",
@@ -178,6 +178,7 @@ export function parsePage(page) {
   const category = get("文章分類")?.select?.name || "";
   const status = get("發布狀態")?.select?.name || "";
   const publishDate = get("預計發布日")?.date?.start || null;
+  const updateDate = get("最後更新日期")?.date?.start || null;
   const mainKeyword = get("主要關鍵字")?.rich_text?.[0]?.plain_text?.trim() || "";
   const relatedKeywords = get("相關關鍵字")?.rich_text?.[0]?.plain_text?.trim() || "";
   const excerpt = get("摘要")?.rich_text?.[0]?.plain_text?.trim() || "";
@@ -190,6 +191,7 @@ export function parsePage(page) {
     category,
     status,
     publishDate,
+    updateDate,
     mainKeyword,
     relatedKeywords,
     excerpt,
