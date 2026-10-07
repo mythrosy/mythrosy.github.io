@@ -112,7 +112,16 @@ async function main() {
       await updatePageProperties(p.id, { 發布狀態: { select: { name: "已發布" } } }, API_KEY);
     }
 
-    posts.push({ ...p, slug, publishDate: p.publishDate || today });
+    const usedFallbackPublishDate = !p.publishDate;
+    const publishDate = p.publishDate || today;
+    if (usedFallbackPublishDate) {
+      // 「預計發布日」欄位是空的，先用今天頂著，但也順手寫回 Notion，
+      // 這樣下次重新產生頁面時就會讀到這個固定日期，不會每次都又變成「今天」、一直往後跳。
+      console.log(`「${p.title}」的預計發布日是空的，自動填入今天（${publishDate}）並寫回 Notion。`);
+      await updatePageProperties(p.id, { 預計發布日: { date: { start: publishDate } } }, API_KEY);
+    }
+
+    posts.push({ ...p, slug, publishDate });
   }
 
   if (posts.length === 0) {
